@@ -47,7 +47,7 @@ en2kor = {
 file.write(f"{today_month}/{today_day}({day_of_week})\n")
 file.write(f"Gross {net}\n")
 
-# Special
+# Content
 all_keys = en2kor.keys()
 current_keys = set(df['Category'])
 food_total = 0
