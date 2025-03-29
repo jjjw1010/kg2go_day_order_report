@@ -9,7 +9,10 @@ import pandas as pd
 today_month = datetime.today().month
 today_day = datetime.today().day
 day_of_week = datetime.today().strftime('%A')
-net = 0
+
+# Find net
+df = pd.read_csv("data01.csv")
+net = int(df['Total Revenue'].sum())
 
 # Load the data
 df = pd.read_csv("data03.csv")
@@ -46,7 +49,7 @@ en2kor = {
 }
 # Headers
 file.write(f"{today_month}/{today_day}({day_of_week})\n")
-file.write(f"Gross {net}\n")
+file.write(f"Gross ${net}\n")
 
 # Content
 all_keys = en2kor.keys()

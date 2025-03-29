@@ -8,7 +8,20 @@ import pandas as pd
 today_month = datetime.today().month
 today_day = datetime.today().day
 day_of_week = datetime.today().strftime('%A')
-net = 0
+
+en2kor_day = {
+    "Monday" : "월",
+    "Tuesday" : "화",
+    "Wenesday" : "수",
+    "Thursday" : "목",
+    "Friday" : "금",
+    "Saturday" : "토",
+    "Sunday" : "일"
+}
+
+# Find net
+df = pd.read_csv("data01.csv")
+net = int(df['Total Revenue'].sum())
 
 # Load the data
 df = pd.read_csv("data03.csv")
@@ -44,8 +57,8 @@ en2kor = {
     'Boba' : "버블티",
 }
 # Headers
-file.write(f"{today_month}/{today_day}({day_of_week})\n")
-file.write(f"Gross {net}\n")
+file.write(f"{today_month}/{today_day}({en2kor_day[day_of_week]})\n")
+file.write(f"Gross ${net}\n")
 
 # Content
 all_keys = en2kor.keys()
