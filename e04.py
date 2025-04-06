@@ -92,9 +92,13 @@ for item in all_keys:
 file.write(f"{en2kor["Food"]} {food_total} ({', '.join(map(str, food_tmp))}) \n")
 file.write(f"{en2kor["Sides"]} {side_total} ({', '.join(map(str, side_tmp))}) \n")
 
-for item in ['Drinks', 'Snack', 'Set Menu', 'Boba']:
+for item in ['Drinks', 'Snack', 'Set Menu']:
     if item in current_keys:
         file.write(f"{en2kor[item]} {index_csv(item)} \n")
+
+if 'Boba' in current_keys:
+    boba_from_set = index_csv('Set Menu') if 'Set Menu' in current_keys else 0
+    file.write(f"{en2kor['Boba']} {index_csv('Boba') + boba_from_set} \n")
 
 file.close
         
